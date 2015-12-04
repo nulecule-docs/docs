@@ -71,7 +71,8 @@ release = '2015.12.04'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+
+exclude_patterns = ['_build','venv']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -114,7 +115,7 @@ html_theme = 'sphinxdoc'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = 'Nulecule Book'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -330,3 +331,10 @@ epub_exclude_files = ['search.html']
 
 # If false, no index is generated.
 #epub_use_index = True
+
+todo_include_todos = True
+
+rst_prolog = """
+.. _docker.io/library/fedora:20: https://hub.docker.com/_/fedora/
+.. _public Docker Hub: https://hub.docker.com/
+"""
