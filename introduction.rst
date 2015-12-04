@@ -9,7 +9,7 @@ Pieces of the collection of underlying technology have been around for
 quite a while, and probably sound more familiar as virtual private
 servers (VPS), jails, Linux Containers (LXC) or chroots.
 
-Unlike virtual machines, Docker does not require a separate operating
+Unlike virtual machines, containers do not require a separate operating
 system instance to run, and instead relies on Linux kernel support for
 namespaces and cgroups, such that the processes that run within a
 container have an isolated view of the operating system.
@@ -25,6 +25,24 @@ turn-key solutions.
 
 What does this mean?
 ====================
+
+A piece of software can be developed with either of two completely
+separate mindsets driving the development team;
+
+#.  Ensure that the functionality set out at the beginning of the
+    development project functions on a pre-defined target platform.
+
+#.  Work to ensure the developer's excel the naughtiest expectations
+    for the software by whatever means necessary.
+
+While there is also a center between this left and right, and shades of
+grey between white and black, there's little that sets a software
+development project up for failure better.
+
+The former development strategy is a so-called waterfall metholodogy.
+
+There's a boundary between a developer's workstation and a server
+platform.
 
 .. TODO::
 
@@ -51,76 +69,4 @@ What does this mean?
 
     *   :ref:`docker-quick-installation-guide`
 
-.. todo:: create a place to work
-
-Example #1: Fedora 20 Welcome Page
-==================================
-
-Create a directory ``example-1/``, with a file named ``Dockerfile`` containing the following:
-
-.. code-block:: none
-    :linenos:
-
-    FROM fedora:20
-
-    RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-20-x86_64
-
-    RUN yum -y install httpd && \
-          yum clean all
-
-    EXPOSE 80
-
-    CMD [ "/usr/sbin/httpd", "-DFOREGROUND" ]
-
-Build the Docker image:
-
-.. parsed-literal::
-
-    $ :command:`docker build -t nulecule-docs/example-1 example-1/.`
-
-Run the Docker image:
-
-.. parsed-literal::
-
-    $ :command:`docker run -it -p 172.17.42.1:80:80 nulecule-docs/example-1`
-
-Now, visit http://172.17.42.1/
-
-.. TODO:: Explain line-by-line for the Docker file.
-.. TODO:: Explain the build command
-.. TODO:: Explain the run command
-.. TODO:: Stop the container (Ctrl-C)
-
-Example #2: CentOS 7 Welcome Page
-=================================
-
-Example #2: Do the same but based on CentOS 7. Create a directory example-2/ and put a file named Dockerfile in it, containing the following:
-
-.. code-block:: none
-    :linenos:
-
-    FROM centos:centos7
-
-    RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-    RUN yum -y install httpd && yum clean all
-
-    EXPOSE 80
-
-    CMD [ "/usr/sbin/httpd", "-DFOREGROUND" ]
-
-Build the Docker image:
-
-.. parsed-literal::
-
-    $ :command:`docker build -t nulecule-docs/example-2 example-2/.`
-
-Run the Docker image:
-
-.. parsed-literal::
-
-    $ :command:`docker run -it -p 172.17.42.1:80:80 nulecule-docs/example-2`
-
-Now, visit http://172.17.42.1/
-
-TODO: “Notice the difference?”
+Continue with our :ref:`getting-started` chapter.

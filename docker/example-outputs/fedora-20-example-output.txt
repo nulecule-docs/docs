@@ -1,0 +1,89 @@
+Sending build context to Docker daemon 2.048 kB
+Step 0 : FROM docker.io/library/fedora:20
+Trying to pull repository docker.io/library/fedora ... 20: Pulling from library/fedora
+eb8e83ebb17d: Already exists 
+0d071bb732e1: Already exists 
+Digest: sha256:1c7e748fc0aebdb6c61048e0d1dcb66ca4e4ee2c9f00f104dc9bb0b6213d0591
+Status: Downloaded newer image for docker.io/fedora:20
+
+ ---> 0d071bb732e1
+Step 1 : RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-20-x86_64
+ ---> Running in fa47489e1a61
+ ---> 58ed6ca97776
+Removing intermediate container fa47489e1a61
+Step 2 : RUN yum -y install httpd && yum clean all
+ ---> Running in f8f0334c1ce5
+Resolving Dependencies
+--> Running transaction check
+---> Package httpd.x86_64 0:2.4.10-2.fc20 will be installed
+--> Processing Dependency: httpd-tools = 2.4.10-2.fc20 for package: httpd-2.4.10-2.fc20.x86_64
+--> Processing Dependency: system-logos-httpd for package: httpd-2.4.10-2.fc20.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.4.10-2.fc20.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.10-2.fc20.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.10-2.fc20.x86_64
+--> Running transaction check
+---> Package apr.x86_64 0:1.5.1-1.fc20 will be installed
+---> Package apr-util.x86_64 0:1.5.3-1.fc20 will be installed
+---> Package fedora-logos-httpd.noarch 0:21.0.1-1.fc20 will be installed
+---> Package httpd-tools.x86_64 0:2.4.10-2.fc20 will be installed
+---> Package mailcap.noarch 0:2.1.42-1.fc20 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                  Arch         Version              Repository     Size
+================================================================================
+Installing:
+ httpd                    x86_64       2.4.10-2.fc20        updates       1.2 M
+Installing for dependencies:
+ apr                      x86_64       1.5.1-1.fc20         updates       107 k
+ apr-util                 x86_64       1.5.3-1.fc20         updates        91 k
+ fedora-logos-httpd       noarch       21.0.1-1.fc20        fedora         28 k
+ httpd-tools              x86_64       2.4.10-2.fc20        updates        79 k
+ mailcap                  noarch       2.1.42-1.fc20        fedora         31 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+5 Dependent packages)
+
+Total download size: 1.5 M
+Installed size: 4.4 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              377 kB/s | 1.5 MB  00:04     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : apr-1.5.1-1.fc20.x86_64                                      1/6 
+  Installing : apr-util-1.5.3-1.fc20.x86_64                                 2/6 
+  Installing : httpd-tools-2.4.10-2.fc20.x86_64                             3/6 
+  Installing : fedora-logos-httpd-21.0.1-1.fc20.noarch                      4/6 
+  Installing : mailcap-2.1.42-1.fc20.noarch                                 5/6 
+  Installing : httpd-2.4.10-2.fc20.x86_64                                   6/6 
+  Verifying  : apr-1.5.1-1.fc20.x86_64                                      1/6 
+  Verifying  : mailcap-2.1.42-1.fc20.noarch                                 2/6 
+  Verifying  : apr-util-1.5.3-1.fc20.x86_64                                 3/6 
+  Verifying  : httpd-2.4.10-2.fc20.x86_64                                   4/6 
+  Verifying  : fedora-logos-httpd-21.0.1-1.fc20.noarch                      5/6 
+  Verifying  : httpd-tools-2.4.10-2.fc20.x86_64                             6/6 
+
+Installed:
+  httpd.x86_64 0:2.4.10-2.fc20                                                  
+
+Dependency Installed:
+  apr.x86_64 0:1.5.1-1.fc20                  apr-util.x86_64 0:1.5.3-1.fc20     
+  fedora-logos-httpd.noarch 0:21.0.1-1.fc20  httpd-tools.x86_64 0:2.4.10-2.fc20 
+  mailcap.noarch 0:2.1.42-1.fc20            
+
+Complete!
+Cleaning repos: fedora updates
+Cleaning up everything
+ ---> 75f7ff26ae49
+Removing intermediate container f8f0334c1ce5
+Step 3 : CMD /usr/sbin/httpd -DFOREGROUND
+ ---> Running in 619c0b30e5b9
+ ---> ee75e9b7acc1
+Removing intermediate container 619c0b30e5b9
+Successfully built ee75e9b7acc1
